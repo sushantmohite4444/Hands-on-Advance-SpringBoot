@@ -1,0 +1,44 @@
+1,) Dirty data - read the data before commit , first update transaction second read transaction 
+
+2,) not repeatable read - if first transaction contain two reads in between two reads 
+					 second transaction update data so first and second read is
+					  different called as not repeatable read
+						(for single row)
+3,) phantom read -  same as a no repeatable read but for unit of data
+
+Locks - shared lock (more lock on row at a time) ,exclusive lock(one lock at time)
+
+			
+
+Read_uncommitted
+		read only committed row .
+		1,2,3, can occur 
+			 
+Read_committed
+		lock on row until transaction complete 
+		1, prevent
+		2,3, occur
+
+Repeatable_Read
+			lock on that all rows which are selected 
+			1,2, prevent
+			3, occur
+			
+Serializable 
+			lock on all db until transaction complete
+			1,2,3, all prevent
+			
+No need to open transaction object until all task complete in method
+method A() CALL method B() suppose  B() uses all this propagation
+	 propagation
+	 never -- don't use this method in transaction otherwise error
+	 not-supported -- this method not part of transaction
+	 nested --- transaction inside transaction
+	 require_new --- create new transaction
+	 required (default propagation) ---B() uses A() method transaction would't create new transaction it create new only if A() is not transactionalional
+	 supports -- if A() contain Transaction  then only B() uses Transaction
+	 mandatory --  A() should have transaction  otherwise error
+			
+		
+		
+
