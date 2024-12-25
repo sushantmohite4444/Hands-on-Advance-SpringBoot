@@ -19,12 +19,13 @@ public class StudentService {
 	DaoInterfaceJPA jpaObj;
 	
 
-	@Transactional(propagation = Propagation.REQUIRED)
-//	@Transactional(propagation = Propagation.SUPPORTS)
+	
+	@Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.SERIALIZABLE)
+//	@Transactional(propagation = Propagation.NOT_SUPPORTED,isolation = Isolation.REPEATABLE_READ)
+//	@Transactional(propagation = Propagation.SUPPORTS,isolation = Isolation.READ_COMMITTED)
+//	@Transactional(propagation = Propagation.NESTED,isolation = Isolation.READ_UNCOMMITTED)
+//	@Transactional(propagation = Propagation.MANDATORY,isolation = Isolation.DEFAULT)
 //	@Transactional(propagation = Propagation.NEVER)
-//	@Transactional(propagation = Propagation.NOT_SUPPORTED)
-//	@Transactional(propagation = Propagation.NESTED)
-//	@Transactional(propagation = Propagation.MANDATORY)
 //	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public Student saveStudent(Student std) {
 		
